@@ -1,0 +1,149 @@
+/*─────────────────  
+   Variáveis e Reset  
+──────────────────*/
+:root {
+  --color-bg: #e0e7ff;
+  --color-card: #ffffff;
+  --color-primary: #1976d2;
+  --color-secondary: #d32f2f;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+  --font-base: 'Arial', sans-serif;
+  --radius: 0.75rem;
+  --transition: 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  color: #333;
+}
+
+/*─────────────────  
+   Layout Principal  
+──────────────────*/
+.container {
+  max-width: 800px;
+  margin: 1.25rem auto;
+  padding: 1.5rem;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px var(--shadow-medium);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.container:hover,
+.container:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-strong);
+}
+
+/*─────────────────  
+   Tipografia  
+──────────────────*/
+h1 {
+  text-align: center;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 2px var(--shadow-light);
+}
+
+/*─────────────────  
+   Vídeo e Legendas  
+──────────────────*/
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+  transition: box-shadow var(--transition);
+}
+
+.video-wrapper:hover {
+  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+}
+
+.video-wrapper video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+video::cue {
+  font-family: var(--font-base);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(25, 118, 210, 0.85);
+  border-radius: 0.25rem;
+  padding: 0.3em 0.8em;
+  line-height: 1.4;
+  text-shadow: 
+    -1px -1px 1px rgba(0, 0, 0, 0.3),
+     1px  1px 1px rgba(255,255,255,0.2);
+}
+
+/* Cues Variantes */
+video::cue(.red) {
+  background: rgba(211, 47, 47, 0.9);
+}
+
+video::cue(.white) {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  text-shadow: none;
+}
+
+/*─────────────────  
+   Acessibilidade  
+──────────────────*/
+a:focus,
+button:focus,
+.container:focus-within {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/*─────────────────  
+   Responsividade  
+──────────────────*/
+/* Mobile First: telas pequenas já estilizadas. */
+@media (min-width: 481px) {
+  /* Tablet */
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 841px) {
+  /* Desktop */
+  .container {
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  video::cue {
+    font-size: 1.2rem;
+    padding: 0.3em 0.8em;
+  }
+}
